@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gembo Tshering Wangchuk</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0f0e;
+    --ink-2: #3a3935;
+    --ink-3: #7a7870;
+    --paper: #f5f2ec;
+    --paper-2: #ede9e0;
+    --gold: #b59a5e;
+    --gold-light: #d4bc87;
+    --rule: rgba(15,15,14,0.12);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(245,242,236,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+    border-right: 0.5px solid var(--rule);
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(48px, 5.5vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--ink-2);
+    display: block;
+    font-size: 0.88em;
+  }
+  .hero-tagline {
+    font-size: 15px;
+    color: var(--ink-3);
+    max-width: 360px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 28px;
+    border: 0.5px solid var(--ink);
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.25s, color 0.25s;
+    width: fit-content;
+  }
+  .hero-cta:hover { background: var(--ink); color: var(--paper); }
+  .hero-cta svg { width: 14px; height: 14px; }
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 80px 80px 80px 64px;
+    position: relative;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 0.5px solid var(--rule);
+    margin-bottom: 48px;
+  }
+  .stat {
+    background: var(--paper);
+    padding: 28px 24px;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--ink);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .hero-contact {
+    font-size: 13px;
+    color: var(--ink-3);
+    line-height: 2;
+  }
+  .hero-contact a { color: var(--ink-2); text-decoration: none; }
+  .hero-contact a:hover { color: var(--gold); }
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .scroll-indicator::before {
+    content: '';
+    width: 40px;
+    height: 0.5px;
+    background: var(--ink-3);
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 120px 80px; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 72px;
+    border-bottom: 0.5px solid var(--rule);
+    padding-bottom: 20px;
+  }
+  .section-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--gold);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience { background: var(--paper-2); }
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    padding: 40px 0;
+    border-bottom: 0.5px solid var(--rule);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  .exp-item.visible { opacity: 1; transform: none; }
+  .exp-meta { padding-top: 4px; }
+  .exp-period {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .exp-company {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .exp-location {
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+  .exp-content {}
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 14px;
+    color: var(--ink-2);
+    padding: 6px 0 6px 20px;
+    position: relative;
+    line-height: 1.7;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .exp-bullets li:last-child { border-bottom: none; }
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+  }
+
+  /* ─── EDUCATION ─── */
+  #education {}
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--rule);
+    border: 0.5px solid var(--rule);
+  }
+  .edu-card {
+    background: var(--paper);
+    padding: 48px 40px;
+  }
+  .edu-school {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .edu-degree {
+    font-size: 13px;
+    color: var(--ink-3);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .edu-year {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .edu-awards {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.8;
+  }
+  .edu-gpa {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 6px 14px;
+    border: 0.5px solid var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── RESEARCH ─── */
+  #research { background: var(--paper-2); }
+  .research-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .research-card {
+    padding: 36px;
+    border: 0.5px solid var(--rule);
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  .research-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--gold);
+  }
+  .research-tag {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .research-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .research-desc {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.75;
+  }
+  .research-metric {
+    margin-top: 20px;
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--ink);
+  }
+  .research-metric span {
+    font-size: 12px;
+    font-family: var(--sans);
+    color: var(--ink-3);
+    display: block;
+    margin-top: 2px;
+    font-style: normal;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── SKILLS ─── */
+  #skills {}
+  .skills-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    background: var(--rule);
+    border: 0.5px solid var(--rule);
+  }
+  .skill-group {
+    background: var(--paper);
+    padding: 40px 32px;
+  }
+  .skill-group-title {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    padding: 5px 12px;
+    border: 0.5px solid var(--rule);
+    background: var(--paper-2);
+    font-size: 12px;
+    color: var(--ink-2);
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+  }
+  #contact .section-title { color: var(--paper); }
+  #contact .section-num { color: var(--gold-light); }
+  #contact .section-header { border-color: rgba(245,242,236,0.15); }
+  .contact-tagline {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--paper);
+    max-width: 600px;
+    margin: 0 auto 60px;
+    line-height: 1.3;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 700px;
+    margin: 0 auto 60px;
+  }
+  .contact-item-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+  .contact-item-val {
+    font-size: 13px;
+    color: rgba(245,242,236,0.7);
+  }
+  .contact-item-val a {
+    color: rgba(245,242,236,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-item-val a:hover { color: var(--paper); }
+  .contact-resume-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    border: 0.5px solid rgba(245,242,236,0.3);
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--paper);
+    transition: background 0.25s;
+  }
+  .contact-resume-btn:hover { background: rgba(245,242,236,0.08); }
+
+  footer {
+    background: var(--ink);
+    border-top: 0.5px solid rgba(245,242,236,0.1);
+    padding: 28px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p { font-size: 12px; color: rgba(245,242,236,0.35); letter-spacing: 0.05em; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.8s 0.1s both; }
+  .hero-name { animation: fadeUp 0.8s 0.25s both; }
+  .hero-tagline { animation: fadeUp 0.8s 0.4s both; }
+  .hero-cta { animation: fadeUp 0.8s 0.55s both; }
+  .hero-stats { animation: fadeUp 0.8s 0.3s both; }
+  .hero-contact { animation: fadeUp 0.8s 0.45s both; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 24px 40px; border-right: none; border-bottom: 0.5px solid var(--rule); }
+    .hero-right { padding: 40px 24px 60px; }
+    section { padding: 72px 24px; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+    .edu-grid, .research-grid, .skills-layout { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+    .scroll-indicator { left: 24px; }
+  }
+  /* ─── STORY ─── */
+  .story-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 80px;
+    align-items: start;
+  }
+  .story-text p {
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .story-lead {
+    font-family: var(--serif);
+    font-size: 22px !important;
+    font-weight: 400;
+    color: var(--ink) !important;
+    line-height: 1.4 !important;
+    margin-bottom: 28px !important;
+  }
+  .story-flags {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 40px 32px;
+    border: 0.5px solid var(--rule);
+    background: var(--paper-2);
+    position: sticky;
+    top: 100px;
+  }
+  .flag-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+  .flag-emoji { font-size: 40px; }
+  .flag-label {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .flag-sub {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .flag-arrow {
+    font-size: 14px;
+    color: var(--ink-3);
+    font-family: var(--sans);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── INTERESTS ─── */
+  .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--rule);
+    border: 0.5px solid var(--rule);
+  }
+  .interest-card {
+    background: var(--paper);
+    padding: 32px 24px;
+    transition: background 0.2s;
+  }
+  .interest-card:hover { background: var(--paper-2); }
+  .interest-tag {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .interest-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .interest-desc {
+    font-size: 13px;
+    color: var(--ink-3);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .story-layout { grid-template-columns: 1fr; }
+    .story-flags { flex-direction: row; flex-wrap: wrap; justify-content: center; position: static; }
+    .interests-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .interests-grid { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">Gembo T. Wangchuk</a>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#interests">Interests</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://www.linkedin.com/in/gembowangchuk-705a72348" target="_blank">LinkedIn ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Economics &amp; Data Science — Finance Track</p>
+    <h1 class="hero-name">
+      Gembo<br>
+      Tshering<br>
+      <em>Wangchuk</em>
+    </h1>
+    <p class="hero-tagline">Finance-focused analyst with hands-on experience in investment management, corporate strategy, and quantitative research across three continents.</p>
+    <a href="#experience" class="hero-cta">
+      View my work
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M7 1l6 6-6 6"/></svg>
+    </a>
+    <div class="scroll-indicator">Scroll to explore</div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">3.8</span>
+        <span class="stat-label">GPA — Dean's List</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2.68</span>
+        <span class="stat-label">Sharpe — Crypto strategy</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">$2M+</span>
+        <span class="stat-label">AUM optimized</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Countries, internships</span>
+      </div>
+    </div>
+    <div class="hero-contact">
+      <div>Scarsdale, New York</div>
+      <div><a href="tel:9293132773">(929) 313-2773</a></div>
+      <div><a href="mailto:wangchukgts@lakeforest.edu">wangchukgts@lakeforest.edu</a></div>
+      <div><a href="mailto:gembow03@gmail.com">gembow03@gmail.com</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Work Experience</h2>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Jan 2026 — Present</div>
+        <div class="exp-company">HV LLC</div>
+        <div class="exp-location">Chicago, IL</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Investment &amp; Data Analyst Intern</div>
+        <ul class="exp-bullets">
+          <li>Conducted business valuations using DCF models and multi-year financial projections for portfolio companies</li>
+          <li>Constructed mean-variance optimized portfolios — minimum-variance, maximum return, and maximum Sharpe configurations — for portfolios ranging $1–2M in AUM</li>
+          <li>Applied MVO frameworks to evaluate risk-return tradeoffs using Python (pandas) and Excel, with outputs directly informing wealth management recommendations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">May — Aug 2025</div>
+        <div class="exp-company">DK Bank</div>
+        <div class="exp-location">Thimphu, Bhutan</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Corporate Strategy &amp; Business Development Intern</div>
+        <ul class="exp-bullets">
+          <li>Structured cross-border payment solutions with Stripe, enhancing liquidity management for Bhutan's $100M+ tourism sector; uncovered $5–10M in revenue opportunities</li>
+          <li>Optimized DK's inaugural treasury partnership playbook using Excel, improving financial reporting accuracy by 15% and ensuring audit readiness</li>
+          <li>Delivered analysis and reporting to C-suite executives, informing strategic liquidity and funding decisions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">May — Aug 2024</div>
+        <div class="exp-company">The Capital Group</div>
+        <div class="exp-location">Thimphu, Bhutan</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Strategy &amp; Finance Analyst</div>
+        <ul class="exp-bullets">
+          <li>Identified ~$100K in overstated net income for a $5–6M hospitality company by uncovering unrecorded depreciation and omitted debt obligations, directly reducing taxable income</li>
+          <li>Reconciled financial statements and presented findings to CFO and executive leadership via a formal report and cleaned Excel model</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Education</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-year">Class of May 2026</div>
+      <div class="edu-school">Lake Forest College</div>
+      <div class="edu-degree">Bachelor of Arts in Economics &amp; Data Science<br>Finance Track</div>
+      <div class="edu-awards">
+        Dean's List &nbsp;·&nbsp; Omicron Delta Epsilon<br>
+        Presidential Scholarship<br>
+        Davis United World College Scholarship<br>
+        Lake Forest College — UWC Grant
+      </div>
+      <div class="edu-gpa">GPA 3.8 / 4.0</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">Class of May 2022</div>
+      <div class="edu-school">Mahindra United World College of India</div>
+      <div class="edu-degree">International Baccalaureate Diploma<br>Pune, India</div>
+      <div class="edu-awards">
+        Bhutan Youth Development Fund Scholarship
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Research &amp; Projects</h2>
+  </div>
+  <div class="research-grid">
+
+    <div class="research-card">
+      <div class="research-tag">Quantiacs Competition · Jan 2026</div>
+      <div class="research-title">Multi-Factor Crypto Momentum Strategy</div>
+      <div class="research-desc">Engineered a composite momentum strategy leveraging inverse-volatility position sizing and trend analysis on daily crypto data (2015–present).</div>
+      <div class="research-metric">2.68 <span>Out-of-sample Sharpe ratio · 22% mean return</span></div>
+    </div>
+
+    <div class="research-card">
+      <div class="research-tag">Academic Research · Dec 2025</div>
+      <div class="research-title">Time-Series Momentum Strategy</div>
+      <div class="research-desc">Replicated Moskowitz, Ooi &amp; Pedersen (2012) TSMOM on 200 liquid U.S. equities via QuantConnect and Python. Strategy remained profitable across all five non-overlapping subperiods and 15 robustness specifications (2012–2024). Ran Fama-French five-factor regression identifying statistically significant alpha (α ≈ 0.0002, t = 2.18).</div>
+    </div>
+
+    <div class="research-card">
+      <div class="research-tag">Citi Simulation · Feb 2026</div>
+      <div class="research-title">Investment Banking — Buyside M&amp;A Analysis</div>
+      <div class="research-desc">Acted as buyside analyst for a hypothetical acquisition; built a five-year financial projection, drafted a comparable company analysis, and synthesized findings into an internal investor summary.</div>
+    </div>
+
+    <div class="research-card">
+      <div class="research-tag">JPMorgan Chase Simulation · 2024</div>
+      <div class="research-title">DCF Valuation &amp; Credit Risk Modeling</div>
+      <div class="research-desc">Built a DCF model with sensitivity testing and conducted competitor analysis for a valuation summary. Separately, analyzed a loan portfolio to estimate credit default risk — transforming raw FICO data into categorized risk buckets for financial reporting.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">My Story</h2>
+  </div>
+  <div class="story-layout">
+    <div class="story-text">
+      <p class="story-lead">From the mountains of Bhutan to the trading floors of Chicago — my path has been anything but conventional.</p>
+      <p>I grew up in Bhutan, a small Himalayan kingdom known more for its Gross National Happiness than its financial markets. Pursuing the International Baccalaureate at Mahindra United World College in Pune, India, I was surrounded by students from over 80 countries — an experience that shaped how I see the world and the people in it.</p>
+      <p>That global curiosity brought me to Lake Forest College in Illinois, where I found my passion at the intersection of economics, data, and finance. From reconciling books for a hospitality company in Thimphu, to modeling cross-border payment flows for Bhutan's tourism sector, to building quantitative strategies in Chicago — every role has added a new lens.</p>
+      <p>I believe the best analysts aren't just technically sharp — they understand context, culture, and the human side of capital. Three countries, three continents, one consistent thread: making sense of complexity.</p>
+    </div>
+    <div class="story-flags">
+      <div class="flag-item">
+        <span class="flag-label">Bhutan</span>
+        <span class="flag-sub">Home</span>
+      </div>
+      <div class="flag-arrow">—</div>
+      <div class="flag-item">
+        <span class="flag-label">India</span>
+        <span class="flag-sub">IB Diploma</span>
+      </div>
+      <div class="flag-arrow">—</div>
+      <div class="flag-item">
+        <span class="flag-label">USA</span>
+        <span class="flag-sub">College + Career</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTS -->
+<section id="interests" style="background: var(--paper-2);">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Beyond the Spreadsheets</h2>
+  </div>
+  <div class="interests-grid">
+    <div class="interest-card">
+      <div class="interest-tag">Sport</div>
+      <div class="interest-title">Basketball</div>
+      <div class="interest-desc">Die-hard Lakers fan and forever Kobe faithful. You'll find me on the court or watching the game — probably both in the same day.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-tag">Sport</div>
+      <div class="interest-title">Football</div>
+      <div class="interest-desc">Manchester United supporter through the highs and the lows. Soccer taught me that strategy matters as much as talent.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-tag">Culinary</div>
+      <div class="interest-title">Food & Cooking</div>
+      <div class="interest-desc">Equally passionate about eating and making it. Currently obsessed with perfecting birria tacos. Exploring cuisines is my favorite form of travel.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-tag">Music</div>
+      <div class="interest-title">Music</div>
+      <div class="interest-desc">My playlist is eclectic — BIGBANG, TWICE, Frank Ocean, Kanye. Genre doesn't matter; great music is great music.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-tag">Music</div>
+      <div class="interest-title">Guitar</div>
+      <div class="interest-desc">Playing guitar keeps me grounded. There's something about learning an instrument that mirrors learning finance — patience, repetition, feel.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-tag">Sport</div>
+      <div class="interest-title">Golf</div>
+      <div class="interest-desc">A new obsession — currently learning and loving every minute of it. The mental game is unlike anything else I've tried.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-tag">Culture</div>
+      <div class="interest-title">Travel</div>
+      <div class="interest-desc">Three countries, counting. Travel is my greatest teacher — every new place rewires how I think about people, money, and the world.</div>
+    </div>
+    <div class="interest-card">
+      <div class="interest-tag">Fitness</div>
+      <div class="interest-title">Running & Gym</div>
+      <div class="interest-desc">Staying active is non-negotiable. Running clears the head; the gym builds the discipline that carries into everything else.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2 class="section-title">Skills</h2>
+  </div>
+  <div class="skills-layout">
+    <div class="skill-group">
+      <div class="skill-group-title">Finance &amp; Analysis</div>
+      <div class="skill-tags">
+        <span class="skill-tag">DCF Modeling</span>
+        <span class="skill-tag">Sensitivity Analysis</span>
+        <span class="skill-tag">Mean-Variance Optimization</span>
+        <span class="skill-tag">Comp Analysis</span>
+        <span class="skill-tag">Financial Statement Analysis</span>
+        <span class="skill-tag">Credit Analysis</span>
+        <span class="skill-tag">Volatility Scaling</span>
+        <span class="skill-tag">Valuation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Technical</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">pandas</span>
+        <span class="skill-tag">numpy</span>
+        <span class="skill-tag">Excel (Advanced)</span>
+        <span class="skill-tag">R</span>
+        <span class="skill-tag">Stata</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">QuantConnect</span>
+        <span class="skill-tag">PowerPoint</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">English (Fluent)</span>
+        <span class="skill-tag">Dzongkha (Native)</span>
+        <span class="skill-tag">Hindi (Conversational)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header" style="justify-content:center; text-align:center; border-color: rgba(245,242,236,0.15);">
+    <span class="section-num">07</span>
+    <h2 class="section-title" style="color:var(--paper);">Get in Touch</h2>
+  </div>
+  <p class="contact-tagline">"Open to opportunities in finance, investment management, and quantitative research."</p>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-item-label">LinkedIn</div>
+      <div class="contact-item-val"><a href="https://www.linkedin.com/in/gembowangchuk-705a72348" target="_blank">linkedin.com/in/gembowangchuk</a></div>
+    </div>
+    <div>
+      <div class="contact-item-label">Email</div>
+      <div class="contact-item-val"><a href="mailto:wangchukgts@lakeforest.edu">wangchukgts@lakeforest.edu</a></div>
+    </div>
+    <div>
+      <div class="contact-item-label">Phone</div>
+      <div class="contact-item-val"><a href="tel:9293132773">(929) 313-2773</a></div>
+    </div>
+  </div>
+  <a href="mailto:wangchukgts@lakeforest.edu" class="contact-resume-btn">
+    Reach out
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 7h12M7 1l6 6-6 6"/></svg>
+  </a>
+</section>
+
+<footer>
+  <p>© 2026 Gembo Tshering Wangchuk</p>
+  <p>Lake Forest College · Economics &amp; Data Science</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.exp-item').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.1) + 's';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
